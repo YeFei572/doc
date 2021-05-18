@@ -1,14 +1,76 @@
-# Headline
+# `StarCoin`测试转主网挖矿教程
 
-> An awesome project.
+### 1、修改账户相关信息
 
-```JS
-   <el-form-item label="类型" prop="bannerType">
-        <el-select v-model="queryParams.bannerType" placeholder="请选择banner类型" clearable size="small">
-          <el-option label="应用跳转" value="1222"/>
-          <el-option label="外部跳转" value="3"/>
-        </el-select>
-      </el-form-item>
+
+```
+# 关掉服务
+systemctl stop starcoin_miner
+systemctl stop starcoin
+# 升级挖矿相关代码
+cd ~/starcoin
+rm * -rf
+wget https://github.com/starcoinorg/starcoin/releases/download/v1.0.0/starcoin-ubuntu-latest.zip
+unzip starcoin-ubuntu-latest.zip
+
+tee /etc/systemd/system/starcoin.service > /dev/null <<EOF 
+[Unit]
+Description=starcoin Full Node
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/root/starcoin/starcoin-artifacts/starcoin -n main
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# 删除主网的原始数据
+rm -rf ~/.starcoin/main/account_vaults
+# 复制测试账户到主网
+cp -rf ~/.starcoin/barnard/account_vaults ~/.starcoin/main/
+# 启动服务
+systemctl start starcoin
+systemctl start starcoin_miner
 ```
 
-![嘻嘻嘻嘻](https://files.catbox.moe/i2002t.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+# 测试网
+
+[Unit]
+Description=starcoin Full Node
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/root/starcoin/starcoin-artifacts/starcoin -n barnard --push-server-url http://miner-metrics-pushgw.starcoin.org:9191/ --push-interval 5 --miner-thread 2
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+```
