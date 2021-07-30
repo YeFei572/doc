@@ -4,6 +4,7 @@
     * [欢迎词](welcome.md)
 * [**运维相关**](operations.md)
     * [关于docker-compose使用方法](operations/docker-compose.md)
+    * [关于Dockerfile使用方法](operations/dockerfile.md)
 * [**Flutter相关**](flutter.md)
     * [protobuf和socket通讯](flutter/protobuf_dart.md)
 * [**白嫖怪**](free.md)
