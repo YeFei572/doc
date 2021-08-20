@@ -1,7 +1,7 @@
 <!-- docs/_sidebar.md -->
 
-* [**首页**](README.md)
-    * [欢迎词](welcome.md)
+* [**工作相关**](work.md)
+    * [发包日志](tb/release-log.md)
 * [**运维相关**](operations.md)
     * [关于docker-compose使用方法](operations/docker-compose.md)
     * [关于Dockerfile使用方法](operations/dockerfile.md)
