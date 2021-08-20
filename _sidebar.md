@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-* [**工作相关**](work.md)
+* [**工作相关**](README.md)
     * [发包日志](tb/release-log.md)
 * [**运维相关**](operations.md)
     * [关于docker-compose使用方法](operations/docker-compose.md)
