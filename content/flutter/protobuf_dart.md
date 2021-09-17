@@ -1,10 +1,10 @@
-#### 1.引入protobuf库
+## 1.引入protobuf库
 ```
 # pubspec.yaml文件引入
 protobuf: 2.0.0
 ```
 
-#### 2.编写`proto`文件
+## 2.编写`proto`文件
 `socket.message.proto`文件
 ```
 syntax = "proto3";
@@ -26,12 +26,12 @@ message AckMessage {
 }
 ```
 
-#### 3.生成`proto`相关`Model`
+## 3.生成`proto`相关`Model`
 配置好插件，使用cmd中的命令自动生成`proto`文件对应的`pb文件`
 ```
 protoc --dart_out=. socket.message.proto
 ```
-#### 4.编码、发消息
+## 4.编码、发消息
 ```
 # 准备protobuf对象
 Message message = Message();
@@ -61,7 +61,7 @@ sendSocket(11, message)
 
 ```
 
-#### 5.收消息、解码
+## 5.收消息、解码
 ```
 # 解码
 /// 数据解码
