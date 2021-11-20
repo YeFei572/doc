@@ -1,10 +1,10 @@
 > 本页面主要记载接口需求方面的说明，按照模块和日期为`Title`
 
-### 一、商品分类
+## 一、商品分类
 
 > 商品分类模块，和商品一对一关系。
 
-#### 1、表结构设计：
+### 1、表结构设计：
 
 ```sql
 -- ----------------------------
@@ -28,16 +28,16 @@ SET FOREIGN_KEY_CHECKS = 1;
 ```
 以上设计其中的`icon_id`是表格`prod_picture`的主键id，分类的图标，暂时先不用管，为了以后的扩展预留字段
 
-#### 2、接口需求
+### 2、接口需求
 - [ ] 商品分类增加
 - [ ] 商品分类删除
 - [ ] 商品分类编辑
 - [ ] 商品分类查询 
 
-### 二、商品管理
+## 二、商品管理
 > 商品管理包含了商品`prod_item`和商品规格`prod_category`两个模块，商品和商品规格两个接口是分开的，包含增删改查。
 
-#### 1、表结构设计
+### 1、表结构设计
 ```sql
 DROP TABLE IF EXISTS `pro_item`;
 CREATE TABLE `pro_item`  (
@@ -61,7 +61,7 @@ CREATE TABLE `pro_item`  (
 SET FOREIGN_KEY_CHECKS = 1;
 ```
 
-#### 1、商品模块
+### 2、接口需求相关
 - [ ] 商品接口增加
 ```json
 {
@@ -114,9 +114,46 @@ SET FOREIGN_KEY_CHECKS = 1;
             ],
             "price": 30.5,                              // 商品价格
             "category_id": 222222222222222,             // 商品分类id
-            "category_name": "美食",                     // 商品分类名称
+            "category_name": "美食",                    // 商品分类名称
+            "publish_flag": 1,                          // 商品是否商家，0未上架，1上架，默认0
             "sku": 200                                  // 商品总库存量，-1为不限量
         }
     ]
 }
 ```
+
+## 三、商品规格（子商品）
+> 每个商品都有多个商品规格，商品一对多商品规格
+
+### 1、表结构设计
+```sql
+DROP TABLE IF EXISTS `pro_item_specification`;
+CREATE TABLE `pro_item_specification`  (
+  `id` bigint(20) NOT NULL COMMENT '主键id',
+  `item_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
+  `specification_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规格名字',
+  `pic_id` bigint(20) NULL DEFAULT NULL COMMENT '规格图片id',
+  `specification_sku` int(10) NULL DEFAULT NULL COMMENT '规格库存',
+  `price` decimal(10, 2) NULL DEFAULT NULL COMMENT '价格',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `publish_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '是否上架,0未上架,1上架,默认是0',
+  `publish_time` datetime(0) NULL DEFAULT NULL COMMENT '上架时间',
+  `create_time` datetime(0) NOT NULL COMMENT '创建时间',
+  `create_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建人id',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人id',
+  `del_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否删除，0未删除，1已删除，默认0',
+  `tenant_id` bigint(20) NOT NULL COMMENT '商户id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品规格' ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+```
+### 2、接口需求相关
+- [ ] 商品规格增加
+
+- [ ] 商品规格删除
+
+- [ ] 商品规格修改
+
+- [ ] 商品规格查询
