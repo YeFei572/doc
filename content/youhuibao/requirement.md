@@ -150,6 +150,7 @@ CREATE TABLE `pro_item_specification`  (
 SET FOREIGN_KEY_CHECKS = 1;
 ```
 ### 2、接口需求相关
+> 商品规格查询为返回结果为List，参考商品列表
 - [ ] 商品规格增加
 
 - [ ] 商品规格删除
