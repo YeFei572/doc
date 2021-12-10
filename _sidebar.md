@@ -5,3 +5,4 @@
     * [亟待讨论事宜](content/youhuibao/notice.md)
     * [需求说明](content/youhuibao/requirement.md)
     * [TODO待办事项](content/youhuibao/todo.md)
+    * [发包记录](content/youhuibao/release.md)
