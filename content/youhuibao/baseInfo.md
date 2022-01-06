@@ -12,7 +12,7 @@
 
 ### 3、小程序端（用户端）
 项目采用京东开源框架：`taro`,进行编写，可以一份代码编译多个小程序
-代码托管在私服上面：https://git.v2ss.cn/keppelfei/wechat_uhuibao
+代码托管在私服上面：https://code.v2ss.cn/keppelfei/wechat_uhuibao
 
 ## 二、原型设计
 本项目所有原型设计均在画板上面粗糙设计：https://excalidraw.com/#room=9f5655c2bf6d6ee0293c,pE0FRGLkLqkMJ2wuyiOsUQ
