@@ -1,6 +1,6 @@
 ## 一、Android
 > `Android`发包记录
-### [version 1.0.2 (2022-01-12)](https://www.pgyer.com/wRZF)
+### [version 1.0.2 (2022-01-24)](https://www.pgyer.com/wRZF)
 
 - 新增消息推送
 - 新增订单语音播报功能
