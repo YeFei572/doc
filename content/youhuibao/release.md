@@ -1,5 +1,11 @@
 ## 一、Android
 > `Android`发包记录
+
+### [version 1.0.3 (2022-04-03)](https://www.pgyer.com/wRZF)
+
+1、新增订单分期功能；
+2、更换app图标；
+3、优化部分页面的流畅度；
 ### [version 1.0.2 (2022-01-24)](https://www.pgyer.com/wRZF)
 
 - 新增消息推送
